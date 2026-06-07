@@ -52,7 +52,7 @@ export default function LandingPage() {
           
           {/* Subtitle */}
           <p className="text-xl text-black/70 md:text-2xl">
-            Modern Salon Management System
+            Modern Repair Management System
           </p>
         </div>
       </div>
@@ -60,7 +60,7 @@ export default function LandingPage() {
       {/* Bottom Text */}
       <div className="relative z-10 px-6 pb-8 text-center">
         <p className="text-sm text-black/60 md:text-base">
-          Streamline your salon operations with our comprehensive management platform.
+          Streamline your repair operations with our comprehensive management platform.
           <br />
           Track inventory, manage repairs, process sales, and grow your business.
         </p>

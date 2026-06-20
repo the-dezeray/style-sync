@@ -5,39 +5,41 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Truck, Package, DollarSign, Calculator, Info } from 'lucide-react';
-import { shippingRates, roundWeight } from '@/lib/mock-data';
+import { shippingRates, getShippingRate, roundWeight } from '@/lib/mock-data';
 import { toast } from 'sonner';
 
 export default function ShippingPage() {
   const [weight, setWeight] = useState('');
   const [quantity, setQuantity] = useState('1');
-  const [category, setCategory] = useState<'clothing' | 'accessories' | 'shoes' | 'repairs'>('clothing');
   const [calculatedCost, setCalculatedCost] = useState<number | null>(null);
   const [roundedWeight, setRoundedWeight] = useState<number | null>(null);
+  const [rateUsed, setRateUsed] = useState<number | null>(null);
 
   const calculateShipping = () => {
     const weightNum = parseFloat(weight);
     const quantityNum = parseInt(quantity);
-    
+
     if (isNaN(weightNum) || weightNum <= 0) {
       toast.error('Please enter a valid weight');
       return;
     }
-    
     if (isNaN(quantityNum) || quantityNum <= 0) {
       toast.error('Please enter a valid quantity');
       return;
     }
 
-    // Apply weight rounding
     const rounded = roundWeight(weightNum);
+    const totalKg = rounded * quantityNum;
+    const rate = getShippingRate(totalKg);
+
+    if (rate === 0) {
+      toast.error('Total weight is outside supported range (1–300 kg)');
+      return;
+    }
+
     setRoundedWeight(rounded);
-    
-    const rate = shippingRates[category];
-    const costPerItem = rate.baseRate + (rounded * rate.perKg);
-    const totalCost = costPerItem * quantityNum;
-    
-    setCalculatedCost(totalCost);
+    setRateUsed(rate);
+    setCalculatedCost(totalKg * rate);
     toast.success('Shipping cost calculated');
   };
 
@@ -113,25 +115,9 @@ export default function ShippingPage() {
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Product Category</label>
-              <div className="grid grid-cols-2 gap-2">
-                {(['clothing', 'accessories', 'shoes', 'repairs'] as const).map((cat) => (
-                  <Button
-                    key={cat}
-                    variant={category === cat ? 'default' : 'outline'}
-                    onClick={() => setCategory(cat)}
-                    className="capitalize"
-                  >
-                    {cat}
-                  </Button>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Weight (kg)</label>
+              <label className="text-sm font-medium">Weight per Item (kg)</label>
               <Input
                 type="number"
                 placeholder="Enter weight"
@@ -155,23 +141,25 @@ export default function ShippingPage() {
             </div>
           </div>
 
-          <Button onClick={calculateShipping} className="w-full gap-2">
+          <Button onClick={calculateShipping} className="w-full gap-2 text-white" style={{ background: 'linear-gradient(to bottom, #923488 0%, #D56CC9 50%, #E69EDD 100%)' }}>
             <Calculator className="h-4 w-4" />
             Calculate Shipping Cost
           </Button>
 
-          {calculatedCost !== null && roundedWeight !== null && (
+          {calculatedCost !== null && roundedWeight !== null && rateUsed !== null && (
             <div className="rounded-lg bg-linear-to-br from-purple-400/10 to-purple-600/10 p-6 space-y-3">
               <div className="text-center">
                 <p className="text-sm text-muted-foreground">Estimated Shipping Cost</p>
                 <p className="text-4xl font-bold">P{calculatedCost.toFixed(2)}</p>
               </div>
-              <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
-                <span>Rounded Weight: {roundedWeight}kg</span>
+              <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground flex-wrap">
+                <span>Rounded Weight: {roundedWeight}kg/item</span>
                 <span>•</span>
                 <span>Quantity: {quantity}</span>
                 <span>•</span>
-                <span>Category: {category}</span>
+                <span>Total: {(roundedWeight * parseInt(quantity || '1')).toFixed(1)}kg</span>
+                <span>•</span>
+                <span>Rate: P{rateUsed}/kg</span>
               </div>
             </div>
           )}
@@ -184,16 +172,17 @@ export default function ShippingPage() {
           <CardTitle>Shipping Rates</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            {Object.entries(shippingRates).map(([cat, rate]) => (
-              <div key={cat} className="flex items-center justify-between rounded-lg border p-4">
+          <div className="space-y-3">
+            {shippingRates.map((tier) => (
+              <div key={tier.min} className="flex items-center justify-between rounded-lg border p-4">
                 <div>
-                  <p className="font-medium capitalize">{cat}</p>
-                  <p className="text-sm text-muted-foreground">
-                    Base: P{rate.baseRate} + P{rate.perKg}/kg
-                  </p>
+                  <p className="font-medium">{tier.min}–{tier.max} kg</p>
+                  <p className="text-sm text-muted-foreground">Total shipment weight</p>
                 </div>
-                <DollarSign className="h-5 w-5 text-muted-foreground" />
+                <div className="flex items-center gap-2">
+                  <p className="font-semibold">P{tier.perKg}/kg</p>
+                  <DollarSign className="h-5 w-5 text-muted-foreground" />
+                </div>
               </div>
             ))}
           </div>

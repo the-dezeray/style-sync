@@ -297,12 +297,17 @@ export const financeData = {
   ],
 };
 
-export const shippingRates = {
-  clothing: { baseRate: 5, perKg: 3 },
-  accessories: { baseRate: 4, perKg: 2.5 },
-  shoes: { baseRate: 6, perKg: 3.5 },
-  repairs: { baseRate: 3, perKg: 2 },
-};
+export const shippingRates = [
+  { min: 1,   max: 25,  perKg: 260 },
+  { min: 26,  max: 45,  perKg: 250 },
+  { min: 46,  max: 100, perKg: 245 },
+  { min: 101, max: 300, perKg: 240 },
+];
+
+export function getShippingRate(totalKg: number): number {
+  const tier = shippingRates.find(t => totalKg >= t.min && totalKg <= t.max);
+  return tier ? tier.perKg : 0;
+}
 
 // Helper function for weight rounding
 export function roundWeight(weight: number): number {

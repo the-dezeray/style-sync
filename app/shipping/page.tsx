@@ -60,8 +60,8 @@ export default function ShippingPage() {
                 <p className="text-sm text-muted-foreground">Pending Shipments</p>
                 <p className="text-2xl font-bold">18</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/10">
-                <Package className="h-6 w-6 text-purple-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                <Package className="h-6 w-6 text-primary" />
               </div>
             </div>
           </CardContent>
@@ -74,8 +74,8 @@ export default function ShippingPage() {
                 <p className="text-sm text-muted-foreground">In Transit</p>
                 <p className="text-2xl font-bold">34</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500/10">
-                <Truck className="h-6 w-6 text-blue-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted">
+                <Truck className="h-6 w-6 text-muted-foreground" />
               </div>
             </div>
           </CardContent>
@@ -88,8 +88,8 @@ export default function ShippingPage() {
                 <p className="text-sm text-muted-foreground">Delivered Today</p>
                 <p className="text-2xl font-bold">12</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-500/10">
-                <Package className="h-6 w-6 text-green-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted">
+                <Package className="h-6 w-6 text-foreground" />
               </div>
             </div>
           </CardContent>
@@ -105,10 +105,10 @@ export default function ShippingPage() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="rounded-lg bg-blue-500/10 p-4 flex items-start gap-3">
-            <Info className="h-5 w-5 text-blue-600 mt-0.5" />
+          <div className="rounded-lg bg-muted p-4 flex items-start gap-3">
+            <Info className="h-5 w-5 text-muted-foreground mt-0.5" />
             <div className="text-sm">
-              <p className="font-medium text-blue-600">Auto Weight Rounding</p>
+              <p className="font-medium text-foreground">Auto Weight Rounding</p>
               <p className="text-muted-foreground">
                 Weights are automatically rounded: 1.1→1.5kg, 2.05→2.5kg, 3.6→4.0kg
               </p>
@@ -141,13 +141,13 @@ export default function ShippingPage() {
             </div>
           </div>
 
-          <Button onClick={calculateShipping} className="w-full gap-2 text-white" style={{ background: 'linear-gradient(to bottom, #923488 0%, #D56CC9 50%, #E69EDD 100%)' }}>
+          <Button onClick={calculateShipping} className="w-full gap-2">
             <Calculator className="h-4 w-4" />
             Calculate Shipping Cost
           </Button>
 
           {calculatedCost !== null && roundedWeight !== null && rateUsed !== null && (
-            <div className="rounded-lg bg-linear-to-br from-purple-400/10 to-purple-600/10 p-6 space-y-3">
+            <div className="rounded-lg bg-primary/10 p-6 space-y-3">
               <div className="text-center">
                 <p className="text-sm text-muted-foreground">Estimated Shipping Cost</p>
                 <p className="text-4xl font-bold">P{calculatedCost.toFixed(2)}</p>

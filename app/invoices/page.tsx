@@ -69,7 +69,7 @@ export default function InvoicesPage() {
     
     // Table Header
     doc.setFont('helvetica', 'bold');
-    doc.setFillColor(250, 204, 21);
+    doc.setFillColor(220, 100, 180);
     doc.rect(20, 115, 170, 8, 'F');
     doc.text('Description', 25, 120);
     doc.text('Pulla', 170, 120, { align: 'right' });
@@ -126,7 +126,7 @@ export default function InvoicesPage() {
   if (isLoading) {
     return (
       <div className="flex h-[60vh] items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-yellow-600" />
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
       </div>
     );
   }
@@ -139,7 +139,7 @@ export default function InvoicesPage() {
           <h1 className="text-3xl font-bold tracking-tight">Invoice Management</h1>
           <p className="text-muted-foreground">View and manage customer invoices</p>
         </div>
-        <Button className="gap-2 bg-linear-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700">
+        <Button className="gap-2">
           <FileText className="h-4 w-4" />
           Create Invoice
         </Button>
@@ -160,7 +160,7 @@ export default function InvoicesPage() {
           <CardContent className="pt-6">
             <div>
               <p className="text-sm text-muted-foreground">Paid</p>
-              <p className="text-2xl font-bold text-green-500">{paidInvoices}</p>
+              <p className="text-2xl font-bold text-primary">{paidInvoices}</p>
             </div>
           </CardContent>
         </Card>
@@ -169,7 +169,7 @@ export default function InvoicesPage() {
           <CardContent className="pt-6">
             <div>
               <p className="text-sm text-muted-foreground">Pending</p>
-              <p className="text-2xl font-bold text-yellow-500">{pendingInvoices}</p>
+              <p className="text-2xl font-bold text-muted-foreground">{pendingInvoices}</p>
             </div>
           </CardContent>
         </Card>
@@ -197,8 +197,8 @@ export default function InvoicesPage() {
                 className="flex items-center justify-between rounded-lg border p-4"
               >
                 <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-yellow-400/20 to-yellow-600/20">
-                    <FileText className="h-6 w-6 text-yellow-600" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                    <FileText className="h-6 w-6 text-primary" />
                   </div>
                   <div>
                     <p className="font-semibold">{transaction.customer}</p>
@@ -264,9 +264,8 @@ export default function InvoicesPage() {
             <div className="space-y-6 p-6 bg-white text-black">
               {/* Company Header */}
               <div className="text-center border-b pb-4">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <Building2 className="h-8 w-8 text-yellow-600" />
-                  <h1 className="text-3xl font-bold">STYLESYNC.COM</h1>
+                <div className="flex justify-center mb-2">
+                  <img src="/logo.png" alt="STYLESYNC Logo" className="h-16 w-auto" />
                 </div>
                 <p className="text-sm text-gray-600">Fashion & Accessories Store</p>
                 <p className="text-xs text-gray-500">123 Fashion Street, Style City, SC 12345</p>
@@ -291,7 +290,7 @@ export default function InvoicesPage() {
 
               {/* Items Table */}
               <div className="border rounded-lg overflow-hidden">
-                <div className="bg-yellow-400 p-3 font-bold grid grid-cols-2">
+                <div className="bg-primary p-3 font-bold grid grid-cols-2 text-primary-foreground">
                   <span>Description</span>
                   <span className="text-right">Pulla</span>
                 </div>
@@ -336,7 +335,7 @@ export default function InvoicesPage() {
                     handleSend(selectedInvoice.id);
                     setShowPreview(false);
                   }}
-                  className="gap-2 bg-linear-to-r from-yellow-400 to-yellow-600"
+                  className="gap-2"
                 >
                   <Send className="h-4 w-4" />
                   Send Invoice

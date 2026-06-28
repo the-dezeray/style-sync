@@ -47,7 +47,7 @@ export default function FinancePage() {
   if (isLoading) {
     return (
       <div className="flex h-[60vh] items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-green-600" />
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
       </div>
     );
   }
@@ -79,7 +79,7 @@ export default function FinancePage() {
             </div>
             <div className="flex items-center justify-between border-t pt-3">
               <span className="text-sm font-medium">Est. Profit</span>
-              <span className="font-bold text-green-500">P{(totalProfit / 30).toLocaleString()}</span>
+              <span className="font-bold text-primary">P{(totalProfit / 30).toLocaleString()}</span>
             </div>
           </CardContent>
         </Card>
@@ -95,12 +95,12 @@ export default function FinancePage() {
             </div>
             <div className="flex items-center justify-between border-t pt-3">
               <span className="text-sm font-medium">Est. Profit</span>
-              <span className="font-bold text-green-500">P{(totalProfit / 4).toLocaleString()}</span>
+              <span className="font-bold text-primary">P{(totalProfit / 4).toLocaleString()}</span>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-yellow-500/20 bg-linear-to-br from-yellow-400/5 to-yellow-600/5">
+        <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-muted-foreground">Monthly Total</CardTitle>
           </CardHeader>
@@ -111,7 +111,7 @@ export default function FinancePage() {
             </div>
             <div className="flex items-center justify-between border-t pt-3">
               <span className="text-sm font-medium">Net Profit</span>
-              <span className="font-bold text-green-500">P{totalProfit.toLocaleString()}</span>
+              <span className="font-bold text-primary">P{totalProfit.toLocaleString()}</span>
             </div>
           </CardContent>
         </Card>
@@ -126,9 +126,9 @@ export default function FinancePage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex items-center justify-between rounded-lg bg-green-500/10 p-4">
+              <div className="flex items-center justify-between rounded-lg bg-primary/10 p-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
                     <TrendingUp className="h-5 w-5 text-white" />
                   </div>
                   <div>
@@ -149,7 +149,7 @@ export default function FinancePage() {
                 </div>
                 <div className="h-2 overflow-hidden rounded-full bg-muted">
                   <div 
-                    className="h-full bg-linear-to-r from-green-400 to-green-600" 
+                    className="h-full bg-primary" 
                     style={{ width: `${totalSales > 0 ? (totalProfit / totalSales) * 100 : 0}%` }}
                   />
                 </div>
@@ -176,7 +176,7 @@ export default function FinancePage() {
                     </div>
                     <div className="h-2 overflow-hidden rounded-full bg-muted">
                       <div
-                        className="h-full bg-linear-to-r from-red-400 to-red-600"
+                        className="h-full bg-muted-foreground/40"
                         style={{ width: `${percentage}%` }}
                       />
                     </div>
@@ -209,7 +209,7 @@ export default function FinancePage() {
                 <p className="text-sm text-muted-foreground">Supplier Cost</p>
                 <p className="text-2xl font-bold">P{totalCost.toLocaleString()}</p>
               </div>
-              <TrendingDown className="h-8 w-8 text-red-500" />
+              <TrendingDown className="h-8 w-8 text-muted-foreground" />
             </div>
           </CardContent>
         </Card>
@@ -221,7 +221,7 @@ export default function FinancePage() {
                 <p className="text-sm text-muted-foreground">Operational Expenses</p>
                 <p className="text-2xl font-bold">P{(totalExpenses - totalCost).toLocaleString()}</p>
               </div>
-              <TrendingDown className="h-8 w-8 text-red-500" />
+              <TrendingDown className="h-8 w-8 text-muted-foreground" />
             </div>
           </CardContent>
         </Card>
@@ -231,9 +231,9 @@ export default function FinancePage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">Net Profit</p>
-                <p className="text-2xl font-bold text-green-500">P{totalProfit.toLocaleString()}</p>
+                <p className="text-2xl font-bold text-primary">P{totalProfit.toLocaleString()}</p>
               </div>
-              <TrendingUp className="h-8 w-8 text-green-500" />
+              <TrendingUp className="h-8 w-8 text-primary" />
             </div>
           </CardContent>
         </Card>

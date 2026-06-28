@@ -69,7 +69,7 @@ export default function InventoryPage() {
     return (
       <div className="flex h-[60vh] items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <Loader2 className="h-12 w-12 animate-spin text-yellow-600" />
+          <Loader2 className="h-12 w-12 animate-spin text-primary" />
           <p className="text-lg font-medium text-muted-foreground">Loading inventory...</p>
         </div>
       </div>
@@ -84,7 +84,7 @@ export default function InventoryPage() {
           <h1 className="text-3xl font-bold tracking-tight">Inventory Management</h1>
           <p className="text-muted-foreground">Manage your products, stock levels, and categories</p>
         </div>
-        <Button className="gap-2 bg-linear-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700">
+        <Button className="gap-2">
           <Plus className="h-4 w-4" />
           Add Product
         </Button>
@@ -94,10 +94,10 @@ export default function InventoryPage() {
       {(lowStockItems.length > 0 || damagedItems.length > 0) && (
         <div className="grid gap-4 md:grid-cols-2">
           {lowStockItems.length > 0 && (
-            <Card className="border-yellow-500/50 bg-yellow-500/5">
+            <Card className="border-primary/30 bg-primary/5">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
-                  <AlertTriangle className="h-5 w-5 text-yellow-600" />
+                  <AlertTriangle className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-semibold">Low Stock Alert</p>
                     <p className="text-sm text-muted-foreground">
@@ -159,8 +159,8 @@ export default function InventoryPage() {
               <Card key={item.id} className="overflow-hidden">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-linear-to-br from-yellow-400/20 to-yellow-600/20">
-                      <Package className="h-8 w-8 text-yellow-600" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10">
+                      <Package className="h-8 w-8 text-primary" />
                     </div>
                     {getStatusBadge(item.status)}
                   </div>
@@ -183,7 +183,7 @@ export default function InventoryPage() {
                     <div>
                       <p className="text-muted-foreground">Sold</p>
                       <p className="font-medium flex items-center gap-1">
-                        <TrendingUp className="h-3 w-3 text-green-600" />
+                        <TrendingUp className="h-3 w-3 text-muted-foreground" />
                         {item.soldCount}
                       </p>
                     </div>

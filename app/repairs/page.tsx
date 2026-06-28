@@ -58,7 +58,7 @@ export default function RepairsPage() {
   if (isLoading) {
     return (
       <div className="flex h-[60vh] items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-purple-600" />
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
       </div>
     );
   }
@@ -71,7 +71,7 @@ export default function RepairsPage() {
           <h1 className="text-3xl font-bold tracking-tight">Repair Management</h1>
           <p className="text-muted-foreground">Track and manage repair jobs for customers</p>
         </div>
-        <Button className="gap-2 bg-gradient-to-r from-purple-400 to-purple-600 hover:from-purple-500 hover:to-purple-700">
+        <Button className="gap-2">
           <Plus className="h-4 w-4" />
           New Repair Job
         </Button>
@@ -86,8 +86,8 @@ export default function RepairsPage() {
                 <p className="text-sm text-muted-foreground">Pending</p>
                 <p className="text-2xl font-bold">{stats.pending}</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/10">
-                <Wrench className="h-6 w-6 text-purple-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                <Wrench className="h-6 w-6 text-primary" />
               </div>
             </div>
           </CardContent>
@@ -100,8 +100,8 @@ export default function RepairsPage() {
                 <p className="text-sm text-muted-foreground">In Progress</p>
                 <p className="text-2xl font-bold">{stats.inProgress}</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500/10">
-                <Wrench className="h-6 w-6 text-blue-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted">
+                <Wrench className="h-6 w-6 text-muted-foreground" />
               </div>
             </div>
           </CardContent>
@@ -114,8 +114,8 @@ export default function RepairsPage() {
                 <p className="text-sm text-muted-foreground">Ready</p>
                 <p className="text-2xl font-bold">{stats.ready}</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-500/10">
-                <Wrench className="h-6 w-6 text-green-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted">
+                <Wrench className="h-6 w-6 text-foreground" />
               </div>
             </div>
           </CardContent>
@@ -128,8 +128,8 @@ export default function RepairsPage() {
                 <p className="text-sm text-muted-foreground">Completed</p>
                 <p className="text-2xl font-bold">{stats.completed}</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-500/10">
-                <Wrench className="h-6 w-6 text-gray-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted">
+                <Wrench className="h-6 w-6 text-muted-foreground" />
               </div>
             </div>
           </CardContent>
@@ -196,8 +196,8 @@ export default function RepairsPage() {
                   </div>
 
                   {job.notes && (
-                    <div className="rounded-lg border border-purple-500/20 bg-purple-500/5 p-3">
-                      <p className="text-xs font-medium text-purple-600">Note:</p>
+                    <div className="rounded-lg border border-border bg-muted p-3">
+                      <p className="text-xs font-medium text-foreground">Note:</p>
                       <p className="text-sm">{job.notes}</p>
                     </div>
                   )}

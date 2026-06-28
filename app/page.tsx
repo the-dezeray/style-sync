@@ -2,19 +2,20 @@
 
 import PixelBlast from '@/components/PixelBlast';
 import { Button } from '@/components/ui/button';
+import { LogIn } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function LandingPage() {
   const router = useRouter();
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-white">
+    <div className="relative min-h-screen w-full overflow-hidden bg-primary-gradient">
       {/* PixelBlast Background */}
-      <div className="absolute inset-0 z-0 bg-white">
+      <div className="absolute inset-0 z-0 opacity-40">
         <PixelBlast
           variant="square"
           pixelSize={4}
-          color="#800080"
+          color="#ffffff"
           patternScale={2}
           patternDensity={1}
           pixelSizeJitter={0}
@@ -32,36 +33,40 @@ export default function LandingPage() {
         />
       </div>
 
-      {/* Top Left Login Button */}
-      <div className="relative z-10 p-6">
+      {/* Top Right Login Button */}
+      <div className="relative z-10 flex justify-end p-4 sm:p-6">
         <Button
           onClick={() => router.push('/login')}
-          className="bg-black text-white hover:bg-gray-800"
+          className="gap-2 bg-black/20 text-white backdrop-blur-sm hover:bg-black/35 border border-white/20 font-medium px-4 sm:px-5"
         >
+          <LogIn className="h-4 w-4" />
           Login
         </Button>
       </div>
 
       {/* Center Content */}
-      <div className="relative z-10 flex min-h-[80vh] flex-col items-center justify-center px-4">
+      <div className="relative z-10 flex min-h-[75vh] flex-col items-center justify-center px-4">
         <div className="max-w-4xl text-center">
-          {/* Logo/Title */}
-          <h1 className="mb-6 text-6xl font-bold text-black md:text-8xl">
+          {/* Brand Name */}
+          <h1
+            className="mb-4 text-5xl font-black text-black sm:text-7xl md:text-9xl"
+            style={{ fontFamily: 'var(--font-display)', letterSpacing: '0.04em' }}
+          >
             STYLESYNC
           </h1>
-          
+
           {/* Subtitle */}
-          <p className="text-xl text-black/70 md:text-2xl">
+          <p className="text-lg text-white/90 sm:text-xl md:text-2xl">
             Modern Repair Management System
           </p>
         </div>
       </div>
 
       {/* Bottom Text */}
-      <div className="relative z-10 px-6 pb-8 text-center">
-        <p className="text-sm text-black/60 md:text-base">
+      <div className="relative z-10 px-4 pb-8 text-center sm:px-6">
+        <p className="text-sm text-white/80 sm:text-base">
           Streamline your repair operations with our comprehensive management platform.
-          <br />
+          <br className="hidden sm:block" />
           Track inventory, manage repairs, process sales, and grow your business.
         </p>
       </div>

@@ -32,11 +32,11 @@ export default function CustomersPage() {
   const getLoyaltyBadge = (status: string) => {
     switch (status) {
       case 'platinum':
-        return <Badge className="gap-1 bg-linear-to-r from-purple-500 to-purple-700"><Crown className="h-3 w-3" />Platinum</Badge>;
+        return <Badge className="gap-1 bg-primary text-primary-foreground"><Crown className="h-3 w-3" />Platinum</Badge>;
       case 'gold':
-        return <Badge className="gap-1 bg-linear-to-r from-purple-500 to-purple-700"><Crown className="h-3 w-3" />Gold</Badge>;
+        return <Badge className="gap-1 bg-primary/80 text-primary-foreground"><Crown className="h-3 w-3" />Gold</Badge>;
       case 'silver':
-        return <Badge className="gap-1 bg-linear-to-r from-gray-400 to-gray-600"><Crown className="h-3 w-3" />Silver</Badge>;
+        return <Badge className="gap-1 bg-muted text-muted-foreground"><Crown className="h-3 w-3" />Silver</Badge>;
       case 'bronze':
         return <Badge variant="outline">Bronze</Badge>;
       default:
@@ -52,7 +52,7 @@ export default function CustomersPage() {
   if (isLoading) {
     return (
       <div className="flex h-[60vh] items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-purple-600" />
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
       </div>
     );
   }
@@ -64,7 +64,7 @@ export default function CustomersPage() {
           <h1 className="text-3xl font-bold tracking-tight">Customer Management</h1>
           <p className="text-muted-foreground">Manage your customer relationships and loyalty programs</p>
         </div>
-        <Button className="gap-2 bg-gradient-to-r from-purple-400 to-purple-600 hover:from-purple-500 hover:to-purple-700">
+        <Button className="gap-2">
           <Plus className="h-4 w-4" />
           Add Customer
         </Button>
@@ -78,8 +78,8 @@ export default function CustomersPage() {
                 <p className="text-sm text-muted-foreground">Total Customers</p>
                 <p className="text-2xl font-bold">{totalCustomers}</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500/10">
-                <ShoppingBag className="h-6 w-6 text-blue-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                <ShoppingBag className="h-6 w-6 text-primary" />
               </div>
             </div>
           </CardContent>
@@ -92,8 +92,8 @@ export default function CustomersPage() {
                 <p className="text-sm text-muted-foreground">Total Revenue</p>
                 <p className="text-2xl font-bold">P{totalRevenue.toLocaleString()}</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-500/10">
-                <ShoppingBag className="h-6 w-6 text-green-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted">
+                <ShoppingBag className="h-6 w-6 text-muted-foreground" />
               </div>
             </div>
           </CardContent>
@@ -106,8 +106,8 @@ export default function CustomersPage() {
                 <p className="text-sm text-muted-foreground">Avg. Spending</p>
                 <p className="text-2xl font-bold">P{avgSpending.toLocaleString()}</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/10">
-                <ShoppingBag className="h-6 w-6 text-purple-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted">
+                <ShoppingBag className="h-6 w-6 text-muted-foreground" />
               </div>
             </div>
           </CardContent>
@@ -120,8 +120,8 @@ export default function CustomersPage() {
                 <p className="text-sm text-muted-foreground">Platinum Members</p>
                 <p className="text-2xl font-bold">{platinumCount}</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/10">
-                <Crown className="h-6 w-6 text-purple-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                <Crown className="h-6 w-6 text-primary" />
               </div>
             </div>
           </CardContent>

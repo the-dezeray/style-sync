@@ -54,7 +54,7 @@ export default function ReportsPage() {
   if (isLoading) {
     return (
       <div className="flex h-[80vh] items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-blue-600" />
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
       </div>
     );
   }
@@ -81,9 +81,9 @@ export default function ReportsPage() {
               <div>
                 <p className="text-sm text-muted-foreground">Total Revenue</p>
                 <p className="text-2xl font-bold">P{totalRevenue.toLocaleString()}</p>
-                <p className="text-xs text-green-500">+12.5% from last month</p>
+                <p className="text-xs text-primary">+12.5% from last month</p>
               </div>
-              <DollarSign className="h-8 w-8 text-green-500" />
+              <DollarSign className="h-8 w-8 text-primary" />
             </div>
           </CardContent>
         </Card>
@@ -94,9 +94,9 @@ export default function ReportsPage() {
               <div>
                 <p className="text-sm text-muted-foreground">Total Profit</p>
                 <p className="text-2xl font-bold">P{totalProfit.toLocaleString()}</p>
-                <p className="text-xs text-green-500">+8.2% from last month</p>
+                <p className="text-xs text-primary">+8.2% from last month</p>
               </div>
-              <TrendingUp className="h-8 w-8 text-green-500" />
+              <TrendingUp className="h-8 w-8 text-primary" />
             </div>
           </CardContent>
         </Card>
@@ -107,9 +107,9 @@ export default function ReportsPage() {
               <div>
                 <p className="text-sm text-muted-foreground">Products Sold</p>
                 <p className="text-2xl font-bold">{productsSold.toLocaleString()}</p>
-                <p className="text-xs text-green-500">+15.3% from last month</p>
+                <p className="text-xs text-primary">+15.3% from last month</p>
               </div>
-              <Package className="h-8 w-8 text-blue-500" />
+              <Package className="h-8 w-8 text-muted-foreground" />
             </div>
           </CardContent>
         </Card>
@@ -120,9 +120,9 @@ export default function ReportsPage() {
               <div>
                 <p className="text-sm text-muted-foreground">Active Customers</p>
                 <p className="text-2xl font-bold">{activeCustomers}</p>
-                <p className="text-xs text-green-500">+6.8% from last month</p>
+                <p className="text-xs text-primary">+6.8% from last month</p>
               </div>
-              <Users className="h-8 w-8 text-purple-500" />
+              <Users className="h-8 w-8 text-muted-foreground" />
             </div>
           </CardContent>
         </Card>
@@ -148,7 +148,7 @@ export default function ReportsPage() {
                 </div>
                 <div className="h-3 overflow-hidden rounded-full bg-muted">
                   <div
-                    className="h-full bg-gradient-to-r from-purple-400 to-purple-600"
+                    className="h-full bg-primary"
                     style={{ width: `${(item.sales / (totalRevenue / 3)) * 100}%` }}
                   />
                 </div>
@@ -166,9 +166,7 @@ export default function ReportsPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             {categoryData.map((cat, idx) => (
-              <div key={idx} className={`flex items-center justify-between rounded-lg p-4 ${
-                idx === 0 ? 'bg-blue-500/10' : idx === 1 ? 'bg-green-500/10' : idx === 2 ? 'bg-purple-500/10' : 'bg-yellow-500/10'
-              }`}>
+              <div key={idx} className="flex items-center justify-between rounded-lg p-4 bg-muted">
                 <span className="font-medium">{cat.name}</span>
                 <span className="text-lg font-bold">P{cat.sales.toLocaleString()}</span>
               </div>
@@ -191,9 +189,7 @@ export default function ReportsPage() {
                   </div>
                   <div className="h-2 overflow-hidden rounded-full bg-muted">
                     <div 
-                      className={`h-full bg-gradient-to-r ${
-                        idx === 0 ? 'from-blue-400 to-blue-600' : idx === 1 ? 'from-green-400 to-green-600' : idx === 2 ? 'from-purple-400 to-purple-600' : 'from-yellow-400 to-yellow-600'
-                      }`} 
+                      className="h-full bg-primary" 
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
@@ -208,8 +204,8 @@ export default function ReportsPage() {
       <div className="grid gap-4 md:grid-cols-3">
         <Card className="cursor-pointer transition-all hover:shadow-lg">
           <CardContent className="flex items-center gap-4 pt-6">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-400/20 to-blue-600/20">
-              <BarChart3 className="h-6 w-6 text-blue-600" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+              <BarChart3 className="h-6 w-6 text-primary" />
             </div>
             <div>
               <p className="font-semibold">Inventory Report</p>
@@ -220,8 +216,8 @@ export default function ReportsPage() {
 
         <Card className="cursor-pointer transition-all hover:shadow-lg">
           <CardContent className="flex items-center gap-4 pt-6">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-green-400/20 to-green-600/20">
-              <BarChart3 className="h-6 w-6 text-green-600" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted">
+              <BarChart3 className="h-6 w-6 text-muted-foreground" />
             </div>
             <div>
               <p className="font-semibold">Customer Report</p>
@@ -232,8 +228,8 @@ export default function ReportsPage() {
 
         <Card className="cursor-pointer transition-all hover:shadow-lg">
           <CardContent className="flex items-center gap-4 pt-6">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-purple-400/20 to-purple-600/20">
-              <BarChart3 className="h-6 w-6 text-purple-600" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted">
+              <BarChart3 className="h-6 w-6 text-muted-foreground" />
             </div>
             <div>
               <p className="font-semibold">Financial Report</p>

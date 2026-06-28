@@ -1,6 +1,6 @@
 'use client';
 
-import { Search, Bell, User } from 'lucide-react';
+import { Search, Bell } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
@@ -24,18 +24,7 @@ export default function Navbar() {
         {/* Notifications */}
         <Button variant="ghost" size="icon" className="relative">
           <Bell className="h-5 w-5" />
-          <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-red-500" />
-        </Button>
-
-        {/* Profile */}
-        <Button variant="ghost" className="gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-purple-400 to-purple-600">
-            <User className="h-4 w-4 text-white" />
-          </div>
-          <div className="text-left">
-            <p className="text-sm font-medium">Admin User</p>
-            <p className="text-xs text-muted-foreground">admin@stylesync.com</p>
-          </div>
+          <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-primary" />
         </Button>
       </div>
     </header>

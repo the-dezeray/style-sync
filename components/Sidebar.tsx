@@ -12,7 +12,7 @@ import {
   Truck, 
   FileText,
   BarChart3,
-  Sparkles
+  User
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -34,14 +34,10 @@ export default function Sidebar() {
   return (
     <div className="flex h-screen w-64 flex-col border-r border-border bg-card">
       {/* Logo */}
-      <div className="flex h-16 items-center gap-2 border-b border-border px-6">
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-400 to-purple-600">
-          <Sparkles className="h-6 w-6 text-white" />
-        </div>
-        <div>
-          <h1 className="text-lg font-bold tracking-tight">STYLESYNC</h1>
-          <p className="text-xs text-muted-foreground">Admin Portal</p>
-        </div>
+      <div className="flex h-20 items-center gap-2 border-b border-border px-6">
+        <Link href="/" className="flex items-center gap-2">
+          <img src="/logo.png" alt="STYLESYNC Logo" className="h-42 w-auto" />
+        </Link>
       </div>
 
       {/* Navigation */}
@@ -68,11 +64,14 @@ export default function Sidebar() {
 
       {/* Footer */}
       <div className="border-t border-border p-4">
-        <div className="rounded-lg bg-gradient-to-br from-purple-400/10 to-purple-600/10 p-4">
-          <p className="text-xs font-medium text-foreground">Premium Plan</p>
-          <p className="mt-1 text-xs text-muted-foreground">
-            All features unlocked
-          </p>
+        <div className="flex items-center gap-3">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary">
+            <User className="h-4 w-4 text-white" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium truncate">Admin User</p>
+            <p className="text-xs text-muted-foreground truncate">admin@stylesync.com</p>
+          </div>
         </div>
       </div>
     </div>

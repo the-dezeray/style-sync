@@ -170,7 +170,7 @@ export default function POSPage() {
   if (isLoading) {
     return (
       <div className="flex h-[60vh] items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-purple-600" />
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
       </div>
     );
   }
@@ -224,6 +224,7 @@ export default function POSPage() {
                       onClick={() => addToCart(item)}
                       disabled={item.stock === 0}
                       className="gap-2"
+                      style={{}}
                     >
                       <Plus className="h-4 w-4" />
                       Add
@@ -312,7 +313,7 @@ export default function POSPage() {
 
                   <Button
                     onClick={handleCheckout}
-                    className="w-full gap-2 bg-linear-to-r from-purple-400 to-purple-600 hover:from-purple-500 hover:to-purple-700"
+                    className="w-full gap-2"
                   >
                     <Wallet className="h-4 w-4" />
                     Proceed to Payment
@@ -339,12 +340,12 @@ export default function POSPage() {
                   onClick={() => setSelectedPayment(method.id)}
                   className={`w-full flex items-center gap-4 rounded-lg border-2 p-4 transition-all ${
                     selectedPayment === method.id
-                      ? 'border-purple-500 bg-purple-500/10'
-                      : 'border-border hover:border-purple-500/50'
+                      ? 'border-primary bg-primary/10'
+                      : 'border-border hover:border-primary/50'
                   }`}
                 >
                   <div className={`flex h-12 w-12 items-center justify-center rounded-full ${
-                    selectedPayment === method.id ? 'bg-purple-500' : 'bg-muted'
+                    selectedPayment === method.id ? 'bg-primary' : 'bg-muted'
                   }`}>
                     <Icon className={`h-6 w-6 ${
                       selectedPayment === method.id ? 'text-white' : 'text-muted-foreground'
@@ -354,7 +355,7 @@ export default function POSPage() {
                     <p className="font-semibold">{method.name}</p>
                   </div>
                   {selectedPayment === method.id && (
-                    <div className="h-5 w-5 rounded-full bg-purple-500 flex items-center justify-center">
+                    <div className="h-5 w-5 rounded-full bg-primary flex items-center justify-center">
                       <div className="h-2 w-2 rounded-full bg-white" />
                     </div>
                   )}
@@ -369,7 +370,7 @@ export default function POSPage() {
             </div>
             <div className="flex justify-between text-lg font-bold">
               <span>To Pay</span>
-              <span className="text-purple-600">P{total.toFixed(2)}</span>
+              <span className="text-primary">P{total.toFixed(2)}</span>
             </div>
           </div>
           <DialogFooter>
@@ -378,7 +379,7 @@ export default function POSPage() {
             </Button>
             <Button 
               onClick={processPayment}
-              className="gap-2 bg-linear-to-r from-purple-400 to-purple-600 hover:from-purple-500 hover:to-purple-700"
+              className="gap-2"
             >
               <CreditCard className="h-4 w-4" />
               Complete Payment
